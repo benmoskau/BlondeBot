@@ -1,43 +1,20 @@
 package main
 
 import (
-	"BlondeBot/utility"
+	"BlondeBot/bot"
+	"BlondeBot/config"
 	"fmt"
-
-	"github.com/bwmarrin/discordgo"
 )
 
-const token string = ""
-
-var BotID string
-
 func main() {
-
-	dg, err := discordgo.New("Bot " + token)
-
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-
-	u, err := dg.User("@me")
-
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-
-	BotID = u.ID
-
-	dg.AddHandler(utility.MessageHandler)
-
-	err = dg.Open()
+	err := config.ReadConfig()
 
 	if err != nil {
 		fmt.Println(err.Error())
 		return
 	}
 
-	fmt.Println("Bot is running!")
+	bot.Start()
 
 	<-make(chan struct{})
 	return

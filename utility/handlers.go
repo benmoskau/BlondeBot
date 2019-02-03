@@ -14,7 +14,11 @@ func MessageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if m.Content == "SAD" {
-		s.ChannelMessageSend(m.ChannelID, "Oh fuck right off")
+		s.ChannelVoiceJoin("@!288502624360333312", "Oh fuck right off", true, true)
+	}
+
+	if m.Content == "<@&452330468826808321>" {
+		s.ChannelMessageSend(m.ChannelID, "<@&452330468826808321>")
 	}
 
 	if m.Content == "Henlo" {
@@ -22,10 +26,10 @@ func MessageHandler(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if m.Content == "<@!207951723292000259>" {
-		s.ChannelMessageSend(m.ChannelID, "Yes?")
+		s.ChannelMessageSend(m.ChannelID, "<a:lol:519666784370950144>")
 	}
 
 	if m.Content == "test" {
-		s.ChannelMessageSendTTS(m.ChannelID, "/tts Test 1 2")
+		s.ChannelMessageSendTTS(m.ChannelID, "Test 1 2")
 	}
 }
